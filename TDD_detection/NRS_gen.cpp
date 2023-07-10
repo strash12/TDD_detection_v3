@@ -8,7 +8,7 @@ namespace nrs
     NS_1_normal{1,5},NS_1_extended{1,4}
     {
         _CellId = Cellid;
-         M = param.Nrb_Max * 2;
+        M = param.Nrb_Max * 2;
         Ncp = param.cyclic == 1  ? 1 : 0;
         Lb  = param.cyclic == 1  ? 7 : 6;
 
@@ -21,7 +21,7 @@ namespace nrs
 
     void NRS_GEN::NRC(param_store::_parametrs param,float** rs_signal_fixed_real, float** rs_signal_fixed_imag, int** rs_space_index)
     {
-        int size = 31+M*2+param.Nc;
+        int size = 31+M*2+Nc;
         int rs_space_1_fix[40];
         int NS_1[2];
         float rs_signal_real[M][Ns*2];
@@ -54,7 +54,7 @@ const xd J(0, 1);
 
 
         int x1[size]; x1[0] = 1; 
-            for(int k=0;k<M*2+param.Nc;k++){
+            for(int k=0;k<M*2+Nc;k++){
                 x1[k+31] = (x1[k+3]+x1[k])%2;
             }        
 
@@ -64,14 +64,14 @@ const xd J(0, 1);
             l++;
             }
 
-            for (int k=0; k<M*2+param.Nc;k++){    
+            for (int k=0; k<M*2+Nc;k++){    
                 x2[k+31] = ((x2[k+3]+x2[k+2]+x2[k+1]+x2[k])%2);//РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё 2
 
             }
     
         int c[M*2];
             for(int i=0;i<M*2;i++){
-                c[i] = (x1[i+param.Nc]+x2[i+param.Nc])%2;//РџРР›РћРўР«
+                c[i] = (x1[i+Nc]+x2[i+Nc])%2;//РџРР›РћРўР«
             }
 
             for (int i=0;i<M;i++){

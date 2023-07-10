@@ -12,7 +12,8 @@ class NRS_GEN
     protected:
         int M;
         int Ncp,Ns_fix,fix_1,C_init,C_init_fix,r,m_,Lb;
-        int Ns = 20;
+        int Ns  = 20;
+        int Nc  =   1600;
         int _CellId;
         int rs_space_1_fix_normal[40];
         int rs_space_1_fix_extended[40];

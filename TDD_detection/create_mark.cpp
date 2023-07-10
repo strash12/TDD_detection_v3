@@ -14,8 +14,8 @@ namespace mark
         {
 
                 set_params();
-                signal::signal_create download_sig(_param.PSS_size);
-                xvec signal = download_sig.download_convert_signal("real1.txt",_param.interp_coef);
+                signal::signal_create download_sig();
+                xvec signal = download_sig.download_convert_signal("real1.txt");
                 corelate_signal(signal);
                 cell_id_calculate(signal);    
 

@@ -9,10 +9,11 @@ namespace param_store
 {
     struct _parametrs
         {
-            int fftsize,cp,cp1,Nrb,Lb,i1start,i1fin,i2start,i2fin,Nc,Nsc,Nrb_Max,Nrb_Min,Ns,OSC,fs,Cor_lvl,cyclic,windowing,band,shift,first,PSS_number,CellId,shift_mark,delay,refsamples,interp_coef,PSS_size;
-	    int shift_second_cor_start, shift_second_cor_stop;
-	    std::string path_first_part[3],path_second_part[3];
+            int fftsize,cp,cp1,Nrb,fs,cyclic,windowing,band,shift,PSS_number,CellId,shift_mark,delay,refsamples;
+	        int shift_second_cor_start, shift_second_cor_stop;
+	        std::string path_first_part[3],path_second_part[3];
             uint32_t MMCM, MMCM_2,adreses;
+            int Ns = 20;
 	
         } ;
         

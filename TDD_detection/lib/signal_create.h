@@ -12,15 +12,11 @@ namespace signal
     class signal_create
     {
         private:
-            xvec convert_signal_normal(int,int);
-            xvec convert_signal_extended(int,int);
             void save_signal_to_file(std::vector<int32_t> samples,std::string name);
-            int size;
         public:
-            signal_create(int PSS_signal_size);
+            signal_create();
             ~signal_create();
-            xvec PSS(int,int,int);
-            xvec download_convert_signal(std::string name,int coef);
+            xvec download_convert_signal(std::string name);
             xvec PSS_signal;
             
     };
