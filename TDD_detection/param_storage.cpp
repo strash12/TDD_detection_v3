@@ -202,10 +202,10 @@ namespace param_store
         param.shift_mark    = param.fs/100-param.fs/1000- 4 *param.fftsize;
 	    param.shift_second_cor_start = -3000;
 	    param.shift_second_cor_stop = 3000;
-        param.windowing     = 1288;
-        param.cyclic        = 1;
-        param.shift         = 50;
-        param.delay         = 2402;
+        param.windowing     =  1288;
+        param.cyclic        =  1;
+        param.shift         =  50;
+        param.delay         =  2402;
         param.refsamples    =  4636;
 
 
