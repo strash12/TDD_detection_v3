@@ -402,7 +402,7 @@ namespace param_store
         param.path_second_part[1]   = "./signal_storage/SSS_array_B5_n2_2.txt";
 	    param.path_second_part[2]   = "./signal_storage/SSS_array_B5_n2_3.txt";
 	    param.shift_second_cor_start = -3000;
-	    param.shift_second_cor_stop = -1500;
+	    param.shift_second_cor_stop = -1000;
         param.windowing     = 7938;
         param.cyclic        = 1;
         param.shift         = 50;
@@ -439,7 +439,7 @@ namespace param_store
         param.path_second_part [1]   = "./signal_storage/SSS_array_B6_n2_2.txt";
         param.path_second_part [2]   = "./signal_storage/SSS_array_B6_n2_3.txt";
         param.shift_mark    = param.fs/100-param.fs/1000-param.fftsize;
-	    param.shift_second_cor_start = -2000;
+	    param.shift_second_cor_start = -3000;
 	    param.shift_second_cor_stop = -1000;
         param.windowing     = 10000;
         param.cyclic        = 1;
