@@ -3,7 +3,7 @@
 #include <exception>
 namespace signal
 {
-    signal::signal_create::signal_create(int PSS_signal_size){}
+    signal::signal_create::signal_create(){}
     signal::signal_create::~signal_create(){}
         
     xvec signal::signal_create::download_convert_signal(std::string name)

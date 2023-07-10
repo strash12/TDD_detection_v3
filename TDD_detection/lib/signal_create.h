@@ -17,7 +17,6 @@ namespace signal
             signal_create();
             ~signal_create();
             xvec download_convert_signal(std::string name);
-            xvec PSS_signal;
             
     };
 } //namespace signal

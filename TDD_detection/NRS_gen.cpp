@@ -8,7 +8,7 @@ namespace nrs
     NS_1_normal{1,5},NS_1_extended{1,4}
     {
         _CellId = Cellid;
-        M = param.Nrb_Max * 2;
+        M   = 220;
         Ncp = param.cyclic == 1  ? 1 : 0;
         Lb  = param.cyclic == 1  ? 7 : 6;
 
