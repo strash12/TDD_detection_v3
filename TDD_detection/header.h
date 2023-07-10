@@ -5,7 +5,6 @@
 #include "../TDD_detection/lib/tch.hpp"
 #include "../TDD_detection/lib/devmem.hpp"
 #include "../TDD_detection/lib/dmac.hpp"
-//#include "../TDD_detection/lib/logger.hpp"
 #include "../TDD_detection/lib/param_storage.h"
 #include "../TDD_detection/lib/signal_create.h"
 #include "../TDD_detection/lib/fpga_configure.h"
@@ -51,10 +50,7 @@ namespace mark
             void calculate_mark(); 
         private:
             void set_params();
-            void download_convert_signal(xvec& signal);
-            void save_signal_to_file(std::vector<int32_t> signal);
             void corelate_signal(xvec signal);
-            void search_maximum();
             void cell_id_calculate(xvec siganal);
     }; // class create_mark
 
