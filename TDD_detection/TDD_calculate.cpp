@@ -57,7 +57,7 @@ std::cout<<"angle_2 = "<<angle_2<<std::endl;
             }
         }
 
-        signal::signal_create download_sig();
+        signal::signal_create download_sig;
         xvec signal = download_sig.download_convert_signal(name);
         return signal;
     }
