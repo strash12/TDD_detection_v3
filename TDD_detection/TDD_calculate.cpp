@@ -13,66 +13,64 @@ namespace mark
     int TDD_create::Calculate_TDD()
     {
 
-            xvec sig_part_2 = set_mark(_param.path_second_part,"fr2.txt");
-            xvec sig_part_1 = set_mark(_param.path_first_part,"fr1.txt");
-            int first_1 = second_corr(sig_part_1);
-            int first_2 = second_corr(sig_part_2);
-		std::cout<<"first 1 = "<<first_1<<std::endl;
-std::cout<<"first 2 = "<<first_2<<std::endl;
-            double angle_1 = calculate_angle(sig_part_1,first_1);
-            double angle_2 = calculate_angle(sig_part_2,first_2);
-std::cout<<"angle_1 = "<<angle_1<<std::endl;
-std::cout<<"angle_2 = "<<angle_2<<std::endl;
-            xvec sig_shift_1 = freq_shift_remove(sig_part_1,angle_1);
-            xvec sig_shift_2 = freq_shift_remove(sig_part_2,angle_2);
-            RS::RS_cut RS_proc(_param);
-            return RS_proc.set_RS(sig_shift_1,sig_shift_2,first_1,first_2);
+            xvec sig_part_2 = set_mark(_param.path_second_part,"fr2.txt"); // ставим метку на вторую половину кадра, и считываем 400000 отсчетов
+            xvec sig_part_1 = set_mark(_param.path_first_part,"fr1.txt");//   ставим метку на первую половину кадра, и считываем 400000 отсчетов
+            int first_1 = second_corr(sig_part_1);// уточнаяющая корреляция для второго считывания первой половины
+            int first_2 = second_corr(sig_part_2);// уточнаяющая корреляция для второго считывания второй половины
+            double angle_1 = calculate_angle(sig_part_1,first_1);// рачитываем частотный сдвиг для первой половины
+            double angle_2 = calculate_angle(sig_part_2,first_2);// рачитываем частотный сдвиг для второй  половины
+            xvec sig_shift_1 = freq_shift_remove(sig_part_1,angle_1);// устраняем сдвиг
+            xvec sig_shift_2 = freq_shift_remove(sig_part_2,angle_2);// устраняем сдвиг
+            RS::RS_cut RS_proc(_param);// протоип класса
+            return RS_proc.set_RS(sig_shift_1,sig_shift_2,first_1,first_2);// считаем TDD config
         
 
     }
 
     xvec TDD_create::set_mark(std::string path[3],std::string name)
     {
-        int ERROR_count;
-        bool validate_bit = 0;
-        int i = 0;
+        int ERROR_count; // счетчик ошибок
+        bool validate_bit = 0; // бит валидации
+        int i = 0; //
 
-        fpga_configure::SSS_upload SSS(_param);
-        fpga_configure::config_fpga check(_param);
+        fpga_configure::SSS_upload SSS(_param); 
+        fpga_configure::config_fpga check(_param); 
 
+        /* пока с fpga части не придел бит валидации (подверждение того что синхронизация с SSS произошла ) перебираем  частии  сигнала SSS  
+         так как размер коррелятора 1024 , генерировать SSS пришлось частями. */
         while (!validate_bit)
         {
-            SSS.load_SSS(_param.CellId,path[i++]);
-            SSS.shift_mark(_param.shift_mark);
-	        usleep(10000000);
-            validate_bit = check.read_validate_bit(ERROR_count);
-            if(_param.band > 4 && i == 3 ){i = 0;}
+            SSS.load_SSS(_param.CellId,path[i++]); // грузим SSS сигнал в fpga
+            SSS.shift_mark(_param.shift_mark); // устанавливаем сдвиг
+	        usleep(10000000);// ждем пока устаканится корреляция
+            validate_bit = check.read_validate_bit(ERROR_count);// проверяем бит валидации если есть выходим из цикла, если нет инкрементируем ошибку
+            if(_param.band > 4 && i == 3 ){i = 0;} // для бесконечного перебора
 	        else if(_param.band < 5 && i == 1) {i = 0;}
 
-            if(ERROR_count == 10 )
+            if(ERROR_count == 10 )// если 10 ошибок, сворачиваес стек и выдаем ошибку
             {
                 tch::write_common("SSS not found");
                 throw mark::TDDException("SSS signal not found, try again");
-                break;
+                break;//
             }
         }
 
-        signal::signal_create download_sig;
-        xvec signal = download_sig.download_convert_signal(name);
+        signal::signal_create download_sig; 
+        xvec signal = download_sig.download_convert_signal(name);// считываем сигнал
         return signal;
     }
 
-    int TDD_create::second_corr(xvec signal)
+    int TDD_create::second_corr(xvec signal) // расчет коэффициента корреляции медом матричного перемножения
     {
         LTE::xcorr corr;
-        xvec PSS = PSS_generate::pss::get_pss(_param.PSS_number,_param.fftsize,_param.cp);
+        xvec PSS = PSS_generate::pss::get_pss(_param.PSS_number,_param.fftsize,_param.cp); // генерим PSS(только одну так как знаем из ее номер )
         return corr.corr_coef(signal,PSS,_param.refsamples,_param.fftsize,_param.cp,_param.shift_second_cor_start,_param.shift_second_cor_stop);
     }
 
     
     double TDD_create::calculate_angle(xvec signal, int first)
     {
-        LTE::freq_shift_estimate freq;
+        LTE::freq_shift_estimate freq; // считаем частотный сдвиг
         return freq.get_angle(signal,_param.cp,_param.fftsize,first);
     }
 
@@ -80,7 +78,7 @@ std::cout<<"angle_2 = "<<angle_2<<std::endl;
     xvec TDD_create::freq_shift_remove(xvec signal,double angle)
     {
         xvec sig(signal.size());
-        for(double i = 0; i <signal.size();i++)
+        for(double i = 0; i <signal.size();i++) // устраняем сдвиг
         {
             sig[i] = signal[i] * exp(J*(i)*(angle/_param.fftsize));
         }

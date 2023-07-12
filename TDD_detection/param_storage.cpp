@@ -1,3 +1,6 @@
+/*из параметров установленных пользователем на вэб интерфейсе, формируется кейс, 
+котороый в дальнейшем будет использоваться ыо всей программе*/
+
 #include "header.h"
 
 namespace param_store
@@ -12,25 +15,25 @@ namespace param_store
     switch (band)
     {
     case 1:
-        param.fftsize       = 1024;
-        param.band          = 4;
-        param.cp1           = 256;
-        param.cp            = 256;
-        param.fs            = 15.36e6;
-        param.Nrb           = 50;                                      
-        param.adreses       = 0x000401D2;
-        param .MMCM         = 0x00000010;
-        param .MMCM_2       = 0x00002004;
-        param.shift_mark                = param.fs/100-param.fs/1000-6*param.fftsize;
-        param.path_first_part[0]        = "./signal_storage/SSS_array_B4.txt";
-        param.path_second_part[0]       = "./signal_storage/SSS_array_B4_n2.txt";
-	    param.shift_second_cor_start    = 4700;
+        param.fftsize       = 1024;  // размер Фурье
+        param.band          = 4;    // номер бэнда
+        param.cp1           = 256;  // длинна циклического префикса 
+        param.cp            = 256;  // длина циклического префикса первого OFDM символа в слоте  
+        param.fs            = 15.36e6; // частота дискретизации
+        param.Nrb           = 50;      // число ресурсных блоков                                
+        param.adreses       = 0x000401D2; // адресс согласно отчету по fpga
+        param .MMCM         = 0x00000010; // адресс согласно отчету по fpga
+        param .MMCM_2       = 0x00002004; // адресс согласно отчету по fpga
+        param.shift_mark                = param.fs/100-param.fs/1000-6*param.fftsize; // сдвиг для установки метки времени
+        param.path_first_part[0]        = "./signal_storage/SSS_array_B4.txt"; // массив SSS для первой половины
+        param.path_second_part[0]       = "./signal_storage/SSS_array_B4_n2.txt"; // массив SSS для второй половины
+	    param.shift_second_cor_start    = 4700; // окна корреляции 
 	    param.shift_second_cor_stop     = 5000;
         param.windowing     = 5092;
-        param.cyclic        = 2;
-        param.shift         = 50;
+        param.cyclic        = 2; // тип циклического префикса 1- нормальный 2 - расширенный
+        param.shift         = 50; // сдвиг для расчета примерного расположения первого символа. TODO: можно поставить значения полученые эмпирическим путем 
         param.delay         = -14;
-        param.refsamples    =   param.fs/1000+3*param.fftsize+param.cp1+2*param.cp+param.delay;
+        param.refsamples    =   param.fs/1000+3*param.fftsize+param.cp1+2*param.cp+param.delay; // примерное расположение первого символа
     break;
 
     
@@ -153,7 +156,7 @@ namespace param_store
         break;
     
     default:
-        mark::TDDException("Error set parametrs to param_storage");
+        mark::TDDException("Error set parametrs to param_storage"); // если призойдет ошибка и не один из кейсов не будет выбран кидаем исключение и сворачиваем стэк
     break;
     }
     return param;
@@ -312,7 +315,7 @@ namespace param_store
     break;
     
     default:
-        mark::TDDException("Error set parametrs to param_storage");
+        mark::TDDException("Error set parametrs to param_storage");// если призойдет ошибка и не один из кейсов не будет выбран кидаем исключение и сворачиваем стэк
     break;
     }
     return param;

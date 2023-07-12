@@ -1,3 +1,8 @@
+/*в данной функции происходит установка параметров в fpga, 
+загрузка сигнала, кореляция с первичным синхронизирующим сигналом(PSS), 
+а так же расчет идентификатора соты (CelliD)*/
+
+
 #include "header.h"
 
 namespace mark
@@ -6,44 +11,44 @@ namespace mark
 
         create_mark::create_mark(tch::FullTusurCommonConfig config)
         {
-            _config = config;
+            _config = config; // прототип структуры содержащей парамеры для расчетов находятся в файле param_storage.cpp
         };
         create_mark::~create_mark(){};
 
         void create_mark::calculate_mark()
         {
-            set_params();
+            set_params(); // передача  параметров о полосе, регистрах, нобере бэнда в fpga 
             signal::signal_create download_sig;
-            xvec signal = download_sig.download_convert_signal("real1.txt");
-            corelate_signal(signal);
-            cell_id_calculate(signal);    
+            xvec signal = download_sig.download_convert_signal("real1.txt"); // загрузка сигнала, параметр который передаем, имя файла в который сохраниться сигнал
+            corelate_signal(signal); // корреляция сигнала с PSS
+            cell_id_calculate(signal);  // рассчет CellID
 
         }
 
         void create_mark::set_params()
         {
-            param_store::parametrs params;//setting the selected parameters
-            _param = params.set_param(_config);
-            fpga_configure::config_fpga fpga(_param);//search PSS in the fpga correlator
-            fpga.set_PSS_fpga();
+            param_store::parametrs params; // прототип структуры с параметрами
+            _param = params.set_param(_config); // передаем параметры в коррелятор
+            fpga_configure::config_fpga fpga(_param);
+            fpga.set_PSS_fpga(); //поиск предположительного отсчета начала кадра
 
         } //set_params
 
         void create_mark::corelate_signal(xvec signal)
         {
-            //xcorr signal widh ref_signal
-            LTE::xcorr corr;
-            double lvl = 0;
-            xvec PSS(_param.fftsize+_param.cp);
-                for(int i = 0; i < 3; i++)
+            
+            LTE::xcorr corr; // прототип структуры с параметрами корреляции
+            double lvl = 0; // уровень корреляции
+            xvec PSS(_param.fftsize+_param.cp); // вектор для хранения PSS сигнала
+                for(int i = 0; i < 3; i++) // dctuj 3 PSS последовательности
                 {   
-                    PSS = PSS_generate::pss::get_pss(i,_param.fftsize,_param.cp);
-                    PSS_data = corr.correlate(signal,PSS,_param.windowing,_param.windowing,_param.shift);
-                    if(PSS_data.maximum > lvl)
+                    PSS = PSS_generate::pss::get_pss(i,_param.fftsize,_param.cp); // генерируем pss
+                    PSS_data = corr.correlate(signal,PSS,_param.windowing,_param.windowing,_param.shift); // передаем сгенерированную PSS ,принятый сигнал, окно корреляции и предположительное место расположения
+                    if(PSS_data.maximum > lvl) // находим максимальный уровень из 3х PSS сигналов
                     {
-                        lvl = PSS_data.maximum;
-                        _param.first = PSS_data.first;
-                        _param.PSS_number = i;
+                        lvl = PSS_data.maximum; // мощность корреляции
+                        _param.first = PSS_data.first; // номер символа начала pss
+                        _param.PSS_number = i; // номер pss сигнала с которым наибольшая корреляция
                     }
                 }
 
@@ -52,8 +57,8 @@ namespace mark
         
         void create_mark::cell_id_calculate(xvec signal)
         {
-                SSS::SSS_PROC SSS;
-                _param.CellId = SSS.CellId_calculate(signal,_param,_param.first);
+                SSS::SSS_PROC SSS; 
+                _param.CellId = SSS.CellId_calculate(signal,_param,_param.first); // рассчет CelliD
         } // cell_id_calculate
 
 

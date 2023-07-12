@@ -8,22 +8,23 @@ namespace signal
         
     xvec signal::signal_create::download_convert_signal(std::string name)
     {
-	    int buffer_size = 200000;	
+	    int buffer_size = 200000;	// размер буффера 
         xvec signal(buffer_size);
         auto samples = dmac::read<int32_t>(400000,0);
             if (samples.size() == 0)
                 {
-                    throw mark::TDDException("Error load signal to signal_create.cpp");
+                    throw mark::TDDException("Error load signal to signal_create.cpp"); // если буфер пустой ошибка
                 }
-        save_signal_to_file(samples,name);
+                if(debug == 1){save_signal_to_file(samples,name);} // сохраняем в файл если включен режим дебага
             
             for(int  i = 0; i < buffer_size;i++)
                 {   
-                    signal[i] = xd((int16_t)(samples[i] & 0xffff),(int16_t)(samples[i] >>16));
+                    signal[i] = xd((int16_t)(samples[i] & 0xffff),(int16_t)(samples[i] >>16)); // записываем считаные сигнал в комплексный вектор
                 }
         return signal;
     }
     
+    /* сохраням в файл*/
     void signal::signal_create::save_signal_to_file(std::vector<int32_t> samples,std::string name)
     {
         std::ofstream outFile(name);

@@ -75,10 +75,10 @@ protected:
 	virtual tch::FullTusurCommonConfig handle_configure() override {
 		try
 		{
-			mark::create_mark first_part(_config);
+			mark::create_mark first_part(_config); // считаем CELLiD
 			first_part.calculate_mark();
 			mark::TDD_create TDD(first_part._param);
-			int TDD_config = TDD.Calculate_TDD();
+			int TDD_config = TDD.Calculate_TDD(); // cxbnftv TDD_config
 			auto msg = "CellId = " + std::to_string(first_part._param.CellId) + "\n" + "TDD config = " + std::to_string(TDD_config);
 			tch::write_common(msg);
 			return _config;
@@ -86,7 +86,7 @@ protected:
 		}
         catch(const mark::TDDException& exception )
         {
-            std::cerr << "Fatal Error : (" << exception.what() << ")\n";
+            std::cerr << "Fatal Error : (" << exception.what() << ")\n"; // если где то в коде возникло исключение обрабатываем и выводим сообщение о ней
         }
 
 

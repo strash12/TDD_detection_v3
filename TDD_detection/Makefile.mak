@@ -1,8 +1,12 @@
+//TODO: доделать ошибки в динамических библиотеках
+
 CC = gcc 
 CFLAGS = -std=c++17  -ltch -lstdc++ -lpython3.10 -pthread -lutil -ldl -lm -W -export-dynamic  -lm -ldevmem -ldmac -lfftw3 -lm
 LIBS = -L/root/test/tusur/TDD_detection_v3/TDD_detection/lib 
 all: TDD_detection
+
 $(info ************  TDD_detection v 1.1.1 ************)
+
 TDD_detection: main.o param_storage.o create_mark.o signal_create.o fpga_configure.o LTE_PROC.o fft.o SSS_process.o TDD_calculate.o RS_PROC.o NRS_gen.o pss.o
 	$(CC) main.o param_storage.o create_mark.o signal_create.o fpga_configure.o LTE_PROC.o fft.o SSS_process.o TDD_calculate.o RS_PROC.o NRS_gen.o pss.o -o TDD_detection
 
