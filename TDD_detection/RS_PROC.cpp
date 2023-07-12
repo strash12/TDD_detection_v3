@@ -114,7 +114,7 @@ int RS_cut::search_maximum()
     {
         double max = *std::max_element(cor_arr.begin(),cor_arr.end());
         for (int i = 0; i < 10; i++) {
-          TDD_conf[i] = (cor_arr[i]<(max/5))  ? 0 : 1;
+          TDD_conf[i] = (cor_arr[i]<(max/10))  ? 0 : 1;
           std::cout<<cor_arr[i]<<std::endl;
 
         }
