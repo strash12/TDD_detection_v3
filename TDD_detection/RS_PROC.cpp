@@ -31,16 +31,16 @@ namespace RS
     void RS_cut::gen_NRS()
     {
         try{
-            rs_signal_fixed_real = new float*[2*_param.Nrb];
+            rs_signal_fixed_real = new double*[2*_param.Nrb];
                 for(int i = 0; i <2*_param.Nrb;i++)
                     {
-                        rs_signal_fixed_real[i] = new float [_param.Ns*2];
+                        rs_signal_fixed_real[i] = new double [_param.Ns*2];
                     }
      
-            rs_signal_fixed_imag = new float*[2*_param.Nrb];
+            rs_signal_fixed_imag = new double*[2*_param.Nrb];
                 for(int i = 0; i <2*_param.Nrb;i++)
                     {
-                        rs_signal_fixed_imag[i] = new float [_param.Ns*2];
+                        rs_signal_fixed_imag[i] = new double [_param.Ns*2];
                     }
             
             rs_space_index = new int*[2*_param.Nrb];

@@ -20,13 +20,13 @@ namespace nrs
     {
     }
 
-    void NRS_GEN::NRC(param_store::_parametrs param,float** rs_signal_fixed_real, float** rs_signal_fixed_imag, int** rs_space_index)
+    void NRS_GEN::NRC(param_store::_parametrs param,double** rs_signal_fixed_real, double** rs_signal_fixed_imag, int** rs_space_index)
     {
         int size = 31+M*2+Nc;
         int rs_space_1_fix[40];
         int NS_1[2];
-        float rs_signal_real[M][Ns*2];
-        float rs_signal_imag[M][Ns*2];
+        double rs_signal_real[M][Ns*2];
+        double rs_signal_imag[M][Ns*2];
 xvec hui[M];
 const xd J(0, 1);
         int o = 0 ;
@@ -40,10 +40,10 @@ const xd J(0, 1);
                 std::copy(std::begin(NS_1_extended),std::end(NS_1_extended),std::begin(NS_1));
             }
             //Инициализация C_init
-            for (int i = 0;i < Ns;i++){
+            for (int i = 0; i < Ns; i++){
                  for (int j = 0;j < 2;j++){
                         Ns_fix = i;
-                        fix_1  = NS_1[j]-1; 
+                        fix_1  = NS_1[j] - 1; 
                         C_init = 1024*(7*(Ns_fix+1)+fix_1+1)*(2*_CellId+1)+2*_CellId+Ncp;
         //в двоичное 31 разрядное число
         std::bitset<31>ns_fix31(C_init);
@@ -94,7 +94,7 @@ const xd J(0, 1);
     }
 // маппинг  пилотов
 
-        float rs_space_1 [Ns*2];
+        double rs_space_1 [Ns*2];
             for (int i=0;i<Ns*2;i++){
                 rs_space_1[i]=rs_space_1_fix[i];
             }
