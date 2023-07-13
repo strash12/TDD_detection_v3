@@ -125,7 +125,7 @@ int RS_cut::search_maximum()
           TDD_conf[i] = (cor_arr[i]<(max/10))  ? 0 : 1;
 
           if(debug){
-          std::cout<<"TDD_corr_lvl = "cor_arr[i]<<std::endl;}
+          std::cout<<"TDD_corr_lvl = "<<cor_arr[i]<<std::endl;}
 
         }
         return TDD_config();
@@ -153,7 +153,7 @@ int RS_cut::search_maximum()
         }
     }
     
-    
+
     return TDD_config;
 }
 
