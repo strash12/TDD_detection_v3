@@ -74,10 +74,10 @@ namespace RS
             fft_cut(Slot_sig_2);
         }
         
-        std::ofstream outFile('framesig_RS');
+        std::ofstream outFile("framesig_RS.txt");
         for (const auto &e : framesig_RS) outFile << e <<"\n";
         outFile.close();
-        
+
         search_maximum();
 	}
 
