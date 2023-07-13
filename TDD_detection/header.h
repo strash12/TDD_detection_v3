@@ -19,6 +19,7 @@
 #include <string_view>
 #include <string>
 #include <exception>
+#include <fstream>
 
 typedef std::complex<double> xd;
 typedef std::vector<xd> xvec;
