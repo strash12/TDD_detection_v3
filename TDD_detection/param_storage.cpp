@@ -24,19 +24,16 @@ namespace param_store
         param.adreses       = 0x000401D2; // адресс согласно отчету по fpga
         param .MMCM         = 0x00000010; // адресс согласно отчету по fpga
         param .MMCM_2       = 0x00002004; // адресс согласно отчету по fpga
-        param.shift_mark                = param.fs/100-param.fs/1000-6*param.fftsize; // сдвиг для установки метки времени
-        param.path_first_part[0]        = "./signal_storage/SSS_array_B4.txt"; // массив SSS для первой половины
-        param.path_second_part[0]       = "./signal_storage/SSS_array_B4_n2.txt"; // массив SSS для второй половины
-	    param.shift_second_cor_start    = 4700; // окна корреляции 
-	    param.shift_second_cor_stop     = 5000;
+        //param.shift_mark                = param.fs/100-param.fs/1000-6*param.fftsize; // сдвиг для установки метки времени
+        param.shift_mark                = param.fs/100-param.fs/1000-param.fftsize;
+        param.path_first_part   [0]        = "./signal_storage/SSS_array_B4.txt"; // массив SSS для первой половины
+        param.path_second_part  [0]       = "./signal_storage/SSS_array_B4_n2.txt"; // массив SSS для второй половины
         param.windowing     = 5092;
         param.cyclic        = 2; // тип циклического префикса 1- нормальный 2 - расширенный
         param.shift         = 50; // сдвиг для расчета примерного расположения первого символа. TODO: можно поставить значения полученые эмпирическим путем 
-        param.delay         = -14;
-        param.refsamples    =   param.fs/1000+3*param.fftsize+param.cp1+2*param.cp+param.delay; // примерное расположение первого символа
+        param.refsamples    = 18933; // примерное расположение первого символа
     break;
 
-    
     case 3:
         param.fftsize        = 256;
         param.band           = 2;
@@ -47,15 +44,14 @@ namespace param_store
         param.adreses        = 0x000200D2;
         param .MMCM          = 0x00000040;
         param .MMCM_2        = 0x00002004;
-        param.shift_mark                = param.fs/100-param.fs/1000-4 * param.fftsize;
-        param.path_first_part[0]        = "./signal_storage/SSS_array_B2.txt";
-        param.path_second_part[0]       = "./signal_storage/SSS_array_B2_n2.txt";
-	    param.shift_second_cor_start    = -500;
-	    param.shift_second_cor_stop     =  500;
+        //param.shift_mark                = param.fs/100-param.fs/1000-4 * param.fftsize;
+        param.shift_mark                = param.fs/100-param.fs/1000-param.fftsize;
+        param.path_first_part   [0]        = "./signal_storage/SSS_array_B2.txt";
+        param.path_second_part  [0]       = "./signal_storage/SSS_array_B2_n2.txt";
         param.windowing     = 1242;
         param.cyclic        = 2;
         param.shift         = 50;
-        param.refsamples    =   4636;
+        param.refsamples    = 4636;
     break;
 
     case 7:
@@ -64,20 +60,18 @@ namespace param_store
         param.cp1           = 128;
         param.cp            = 128;
         param.fs            = 7.68e6;
-        param.Nrb           =  25;                                     
-        param.adreses     = 0x00030136;
+        param.Nrb           = 25;                                     
+        param.adreses       = 0x00030136;
         param .MMCM         = 0x00000020;
         param .MMCM_2       = 0x00002004;
-        param.shift_mark         = param.fs/100-param.fs/1000- 4 * param.fftsize;
-        param.path_first_part[0]   = "./signal_storage/SSS_array_B3.txt";
-        param.path_second_part[0]   = "./signal_storage/SSS_array_B3_n2.txt";
-	    param.shift_second_cor_start = 800;
-	    param.shift_second_cor_stop = 1000;
+        //param.shift_mark                = param.fs/100-param.fs/1000- 4 * param.fftsize;
+        param.shift_mark                = param.fs/100-param.fs/1000-param.fftsize;
+        param.path_first_part   [0]        = "./signal_storage/SSS_array_B3.txt";
+        param.path_second_part  [0]       = "./signal_storage/SSS_array_B3_n2.txt";
         param.windowing     = 2528;
         param.cyclic        = 2;
         param.shift         = 50;
-        param.delay         = -14;
-        param.refsamples    =   param.fs/1000+3*param.fftsize+param.cp1+2*param.cp+param.delay;
+        param.refsamples    = 10487;
     break;
 
     case 15:
@@ -87,19 +81,16 @@ namespace param_store
         param.cp            = 256;
         param.fs            = 15.36e6;
         param.Nrb           = 50;                                      
-        param.adreses      = 0x000401D2;
+        param.adreses       = 0x000401D2;
         param .MMCM         = 0x00000010;
         param .MMCM_2       = 0x00002004;
-        param.shift_mark         = param.fs/100-param.fs/1000-param.fftsize;
-        param.path_first_part[0]   = "./signal_storage/SSS_array_B4.txt";
-        param.path_second_part[0]   = "./signal_storage/SSS_array_B4_n2.txt";
-	    param.shift_second_cor_start = -500;
-	    param.shift_second_cor_stop = -200;
+        param.shift_mark                = param.fs/100-param.fs/1000-param.fftsize;
+        param.path_first_part   [0]        = "./signal_storage/SSS_array_B4.txt";
+        param.path_second_part  [0]       = "./signal_storage/SSS_array_B4_n2.txt";;
         param.windowing     = 5099;
         param.cyclic        = 2;
         param.shift         = 50;
-        param.delay         = -14;
-        param.refsamples    =   param.fs/1000+3*param.fftsize+param.cp1+2*param.cp+param.delay;
+        param.refsamples    = 18933;
     break;
 
     case 23:
@@ -112,20 +103,17 @@ namespace param_store
         param.adreses       = 0x000501A4;
         param .MMCM         = 0x0002FE0A;
         param .MMCM_2       = 0x01702004;
-        param.shift_mark         = param.fs/100-param.fs/1000-param.fftsize;
-        param.path_first_part[0]   = "./signal_storage/SSS_array_B5_n1_1.txt";
-        param.path_first_part[1]   = "./signal_storage/SSS_array_B5_n1_2.txt";
-	    param.path_first_part[2]   = "./signal_storage/SSS_array_B5_n1_3.txt";
-        param.path_second_part[0]   = "./signal_storage/SSS_array_B5_n2_1.txt";
-        param.path_second_part[1]   = "./signal_storage/SSS_array_B5_n2_2.txt";
-	    param.path_second_part[2]   = "./signal_storage/SSS_array_B5_n2_3.txt";
-	    param.shift_second_cor_start = -200;
-	    param.shift_second_cor_stop = 200;
+        param.shift_mark                = param.fs/100-param.fs/1000-param.fftsize;
+        param.path_first_part   [0]        = "./signal_storage/SSS_array_B5_n1_1.txt";
+        param.path_first_part   [1]        = "./signal_storage/SSS_array_B5_n1_2.txt";
+	    param.path_first_part   [2]        = "./signal_storage/SSS_array_B5_n1_3.txt";
+        param.path_second_part  [0]       = "./signal_storage/SSS_array_B5_n2_1.txt";
+        param.path_second_part  [1]       = "./signal_storage/SSS_array_B5_n2_2.txt";
+	    param.path_second_part  [2]       = "./signal_storage/SSS_array_B5_n2_3.txt";
         param.windowing     = 7645;
         param.cyclic        = 2;
         param.shift         = 50;
-        param.delay         = -14;
-        param.refsamples    = param.fs/1000+3*param.fftsize+param.cp1+2*param.cp+param.delay;
+        param.refsamples    = 28912;
     break;
 
     case 30:
@@ -139,17 +127,15 @@ namespace param_store
         param .MMCM         = 0x00000008;
         param .MMCM_2       = 0x00002004;
         param.shift_mark         = param.fs/100-param.fs/1000-param.fftsize;
-        param.path_first_part [0]   = "./signal_storage/SSS_array_B6_n1_1.txt";
-        param.path_first_part [1]   = "./signal_storage/SSS_array_B6_n1_2.txt";
-        param.path_first_part [2]   = "./signal_storage/SSS_array_B6_n1_3.txt";
-        param.path_second_part [0]   = "./signal_storage/SSS_array_B6_n2_1.txt";
-        param.path_second_part [1]   = "./signal_storage/SSS_array_B6_n2_2.txt";
-        param.path_second_part [2]   = "./signal_storage/SSS_array_B6_n2_3.txt";
-	    param.shift_second_cor_start = -500;
-	    param.shift_second_cor_stop = 500;
+        param.path_first_part   [0]   = "./signal_storage/SSS_array_B6_n1_1.txt";
+        param.path_first_part   [1]   = "./signal_storage/SSS_array_B6_n1_2.txt";
+        param.path_first_part   [2]   = "./signal_storage/SSS_array_B6_n1_3.txt";
+        param.path_second_part  [0]   = "./signal_storage/SSS_array_B6_n2_1.txt";
+        param.path_second_part  [1]   = "./signal_storage/SSS_array_B6_n2_2.txt";
+        param.path_second_part  [2]   = "./signal_storage/SSS_array_B6_n2_3.txt";
         param.windowing     = 10000;
         param.cyclic        = 2;
-        param.shift         = 1000;
+        param.shift         = 50;
         param.refsamples    = 38900;
         break;
     
