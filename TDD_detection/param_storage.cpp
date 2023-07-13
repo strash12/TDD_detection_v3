@@ -63,7 +63,7 @@ namespace param_store
         param.path_first_part   [0]     = "./signal_storage/SSS_array_B3.txt";
         param.path_second_part  [0]     = "./signal_storage/SSS_array_B3_n2.txt";
         param.windowing     = 2528;
-        param.refsamples    = 9790;
+        param.refsamples    = 10487;
     break;
 
     case 15:
@@ -190,7 +190,7 @@ namespace param_store
         param.path_second_part[0]   = "./signal_storage/SSS_array_B3_n2.txt";
         param.shift_mark    = param.fs/100-param.fs/1000- 3 * param.fftsize;
         param.windowing     = 2619;
-        param.refsamples    = 10487;
+        param.refsamples    = 9790;
 
     break;
     
