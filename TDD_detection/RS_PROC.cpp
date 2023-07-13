@@ -75,7 +75,7 @@ namespace RS
         }
         
         std::ofstream outFile("framesig_RS.txt");
-        for (const auto &e : framesig_RS) outFile << e <<"\n";
+        for (const auto &e : framesig_RS) {outFile << e <<"\n";}
         outFile.close();
 
         search_maximum();
