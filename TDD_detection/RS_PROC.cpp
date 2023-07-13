@@ -99,6 +99,7 @@ namespace RS
         
         for (int i = 0; i < _param.Nrb*2;i++){
             int a = rs_space_index[i][d]-1;
+            std::cout<<a<<std::endl;
                 framesig_RS[k] = Slot[a];
                 ref_RS[k] = xd(rs_signal_fixed_real[i][j],rs_signal_fixed_imag[i][j]);
                 k++;
