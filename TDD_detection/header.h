@@ -23,7 +23,7 @@
 typedef std::complex<double> xd;
 typedef std::vector<xd> xvec;
 
-static const debug = 1;
+static int const debug = 1;
 
 namespace mark
 {
