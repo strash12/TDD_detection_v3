@@ -8,9 +8,9 @@ namespace signal
         
     xvec signal::signal_create::download_convert_signal(std::string name)
     {
-	    int buffer_size = 165000;	// размер буффера 
+	    int buffer_size = 163800;	// размер буффера 
         xvec signal(buffer_size);
-        auto samples = dmac::read<int32_t>(330000,0);
+        auto samples = dmac::read<int32_t>(327600,0);
             if (samples.size() == 0)
                 {
                     throw mark::TDDException("Error load signal to signal_create.cpp"); // если буфер пустой ошибка
