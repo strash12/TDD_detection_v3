@@ -252,7 +252,7 @@ namespace param_store
         param.path_second_part  [1]      = "./signal_storage/SSS_array_B6_n2_2.txt";
         param.path_second_part  [2]      = "./signal_storage/SSS_array_B6_n2_3.txt";
         param.windowing     =   9650;
-        param.refsamples    =   38900;
+        param.refsamples    =   38000;
 
     break;
     
