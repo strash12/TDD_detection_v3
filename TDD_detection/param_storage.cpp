@@ -267,15 +267,13 @@ namespace param_store
     _parametrs  parametrs::set_param(tch::FullTusurCommonConfig _config)
     {
         int band = _config.bandwidth;
-        
-        _config.cp_mode == tch::CpMode::Normal? return Norm_cp(band):return Ext_cp(band);
-        /*if(_config.cp_mode == tch::CpMode::Normal){   
+        if(_config.cp_mode == tch::CpMode::Normal){   
                 return Norm_cp(band);
             }
         else
             {
                 return Ext_cp(band);
-            }*/
+            }
             
     }
 
