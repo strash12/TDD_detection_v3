@@ -23,7 +23,7 @@ class NRS_GEN
     public:
         NRS_GEN(param_store::_parametrs param,int);
         ~NRS_GEN();
-        void NRC(param_store::_parametrs param,float** rs_signal_fixed_real, float** rs_signal_fixed_imag, int** rs_space_index );
+        void NRC(param_store::_parametrs param,double** rs_signal_fixed_real, double** rs_signal_fixed_imag, int** rs_space_index );
 };
 
 
