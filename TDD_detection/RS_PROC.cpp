@@ -83,7 +83,6 @@ namespace RS
         for (const auto &e : framesig_RS) {outFile << e <<"\n";}
         outFile.close();
 
-        search_maximum();
 	}
 
    
@@ -104,7 +103,6 @@ namespace RS
         
         for (int i = 0; i < _param.Nrb*2;i++){
             int a = rs_space_index[i][d]-1;
-           // std::cout<<a<<std::endl;
                 framesig_RS[k] = Slot[a];
                 ref_RS[k] = xd(rs_signal_fixed_real[i][j],rs_signal_fixed_imag[i][j]);
                 k++;
@@ -125,7 +123,9 @@ int RS_cut::search_maximum()
         double max = *std::max_element(cor_arr.begin(),cor_arr.end());
         for (int i = 0; i < 10; i++) {
           TDD_conf[i] = (cor_arr[i]<(max/10))  ? 0 : 1;
-          std::cout<<cor_arr[i]<<std::endl;
+
+          if(debug){
+          std::cout<<cor_arr[i]<<std::endl;}
 
         }
         return TDD_config();

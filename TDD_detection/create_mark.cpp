@@ -59,6 +59,10 @@ namespace mark
         {
                 SSS::SSS_PROC SSS; 
                 _param.CellId = SSS.CellId_calculate(signal,_param,_param.first); // рассчет CelliD
+                if(debug)
+                {
+                    std::cout<<_param.CellId<<std::endl;
+                }
         } // cell_id_calculate
 
 

@@ -11,7 +11,8 @@ namespace param_store
     
     _parametrs parametrs::Ext_cp(int band)
     {
-    _parametrs param;    
+    _parametrs param;
+    param.cyclic        = 2; // тип циклического префикса 1- нормальный 2 - расширенный    
     switch (band)
     {
     case 1:
@@ -24,13 +25,10 @@ namespace param_store
         param.adreses       = 0x000401D2; // адресс согласно отчету по fpga
         param .MMCM         = 0x00000010; // адресс согласно отчету по fpga
         param .MMCM_2       = 0x00002004; // адресс согласно отчету по fpga
-        //param.shift_mark                = param.fs/100-param.fs/1000-6*param.fftsize; // сдвиг для установки метки времени
-        param.shift_mark                = param.fs/100-param.fs/1000-param.fftsize;
+        param.shift_mark                = param.fs/100-param.fs/1000-param.fftsize; // сдвиг для установки метки времени
         param.path_first_part   [0]        = "./signal_storage/SSS_array_B4.txt"; // массив SSS для первой половины
         param.path_second_part  [0]       = "./signal_storage/SSS_array_B4_n2.txt"; // массив SSS для второй половины
         param.windowing     = 5092;
-        param.cyclic        = 2; // тип циклического префикса 1- нормальный 2 - расширенный
-        param.shift         = 50; // сдвиг для расчета примерного расположения первого символа. TODO: можно поставить значения полученые эмпирическим путем 
         param.refsamples    = 18933; // примерное расположение первого символа
     break;
 
@@ -44,12 +42,10 @@ namespace param_store
         param.adreses        = 0x000200D2;
         param .MMCM          = 0x00000040;
         param .MMCM_2        = 0x00002004;
-        param.shift_mark                = param.fs/100-param.fs/1000-4 * param.fftsize;
-        param.path_first_part   [0]        = "./signal_storage/SSS_array_B2.txt";
-        param.path_second_part  [0]       = "./signal_storage/SSS_array_B2_n2.txt";
+        param.shift_mark                    = param.fs/100-param.fs/1000-4 * param.fftsize;
+        param.path_first_part   [0]         = "./signal_storage/SSS_array_B2.txt";
+        param.path_second_part  [0]         = "./signal_storage/SSS_array_B2_n2.txt";
         param.windowing     = 1242;
-        param.cyclic        = 2;
-        param.shift         = 50;
         param.refsamples    = 4636;
     break;
 
@@ -67,8 +63,6 @@ namespace param_store
         param.path_first_part   [0]        = "./signal_storage/SSS_array_B3.txt";
         param.path_second_part  [0]       = "./signal_storage/SSS_array_B3_n2.txt";
         param.windowing     = 2528;
-        param.cyclic        = 2;
-        param.shift         = 50;
         param.refsamples    = 10487;
     break;
 
@@ -86,8 +80,6 @@ namespace param_store
         param.path_first_part   [0]        = "./signal_storage/SSS_array_B4.txt";
         param.path_second_part  [0]       = "./signal_storage/SSS_array_B4_n2.txt";;
         param.windowing     = 5099;
-        param.cyclic        = 2;
-        param.shift         = 50;
         param.refsamples    = 18933;
     break;
 
@@ -110,7 +102,6 @@ namespace param_store
 	    param.path_second_part  [2]       = "./signal_storage/SSS_array_B5_n2_3.txt";
         param.windowing     = 7645;
         param.cyclic        = 2;
-        param.shift         = 50;
         param.refsamples    = 28912;
     break;
 
@@ -132,8 +123,6 @@ namespace param_store
         param.path_second_part  [1]   = "./signal_storage/SSS_array_B6_n2_2.txt";
         param.path_second_part  [2]   = "./signal_storage/SSS_array_B6_n2_3.txt";
         param.windowing     = 10000;
-        param.cyclic        = 2;
-        param.shift         = 50;
         param.refsamples    = 38900;
         break;
     
@@ -166,7 +155,6 @@ namespace param_store
 	    param.shift_second_cor_stop = 2800;
         param.windowing     = 5265;
         param.cyclic        = 1;
-        param.shift         = 50;
         param.delay         = 2402;
         param.refsamples    =   param.fs/1000+3*param.fftsize+param.cp1+2*param.cp+param.delay;
 
@@ -189,7 +177,6 @@ namespace param_store
 	    param.shift_second_cor_stop = 3000;
         param.windowing     =  1288;
         param.cyclic        =  1;
-        param.shift         =  50;
         param.delay         =  2402;
         param.refsamples    =  4636;
 
@@ -213,7 +200,6 @@ namespace param_store
 	    param.shift_second_cor_stop = -1800;
         param.windowing     = 2619;
         param.cyclic        = 1;
-        param.shift         = 50;
         param.delay         = 2402;
         param.refsamples    =   param.fs/1000+3*param.fftsize+param.cp1+2*param.cp+param.delay;
 
@@ -236,7 +222,6 @@ namespace param_store
         param.shift_mark    = param.fs/100-param.fs/1000-param.fftsize;
         param.windowing     = 5265;
         param.cyclic        = 1;
-        param.shift         = 50;
         param.delay         = 2402;
         param.refsamples    =   param.fs/1000+3*param.fftsize+param.cp1+2*param.cp+param.delay;
 
@@ -264,7 +249,6 @@ namespace param_store
 	    param.shift_second_cor_stop = -1000;
         param.windowing     = 7938;
         param.cyclic        = 1;
-        param.shift         = 50;
         param.delay         = 2042;
 	    param.refsamples    =   param.fs/1000+3*param.fftsize+param.cp1+2*param.cp+param.delay;
     break;
@@ -290,7 +274,6 @@ namespace param_store
 	    param.shift_second_cor_stop = -1000;
         param.windowing     = 10000;
         param.cyclic        = 1;
-        param.shift         = 1000;
         param.delay         = 2402;
         param.refsamples    =   param.fs/1000+3*param.fftsize+param.cp1+2*param.cp+param.delay;
 
