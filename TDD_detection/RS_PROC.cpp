@@ -88,10 +88,11 @@ namespace RS
       xvec SLOT_sig_fft = fft.fft(slotsig);
       xvec slot_sig_cut(SLOT_sig_fft.begin()+_param.fftsize/2-(2*_param.Nrb)*3,SLOT_sig_fft.begin()+_param.fftsize/2);
       slot_sig_cut.insert(slot_sig_cut.end(),SLOT_sig_fft.begin()+_param.fftsize/2+1,SLOT_sig_fft.begin()+_param.fftsize/2+(2*_param.Nrb)*3+1);
-      for(xvec &i:slot_sig_cut)
+      for(int i = 0; i <slot_sig_cut.size();i++)
       {
         std::cout<<"ghghgh"<<std::endl;
-        std::cout<<i<<std::endl;}
+        std::cout<<slot_sig_cut[i]<<std::endl;
+        }
       gen_array(slot_sig_cut);
     }
 
