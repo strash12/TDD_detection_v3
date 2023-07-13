@@ -18,6 +18,11 @@ namespace RS
     
     int RS_cut::set_RS(xvec sig_shift_1, xvec sig_shift_2, int first_1, int first_2)
     {   
+        if(debug)
+        {
+            std::cout<<"first_1 = "<< first_1<<std::endl;
+            std::cout<<"first_2 = "<< first_2<<std::endl;
+        }
         int sub = _param.fs/1e3;
         xvec Frame(sig_shift_1.begin()+first_1-(2*_param.fftsize)-_param.cp-_param.cp1-sub-1,sig_shift_1.begin()+first_1-(2*_param.fftsize)-_param.cp-_param.cp1-1+(4*sub));
         Frame.insert(Frame.end(),sig_shift_2.begin()+first_2-(2*_param.fftsize)-_param.cp-_param.cp1-sub-1,sig_shift_2.begin()+first_2-(2*_param.fftsize)-_param.cp-_param.cp1-1+(4*sub));
@@ -88,12 +93,6 @@ namespace RS
       xvec SLOT_sig_fft = fft.fft(slotsig);
       xvec slot_sig_cut(SLOT_sig_fft.begin()+_param.fftsize/2-(2*_param.Nrb)*3,SLOT_sig_fft.begin()+_param.fftsize/2);
       slot_sig_cut.insert(slot_sig_cut.end(),SLOT_sig_fft.begin()+_param.fftsize/2+1,SLOT_sig_fft.begin()+_param.fftsize/2+(2*_param.Nrb)*3+1);
-      std::cout<<"SLOT_sig_fft.size() = "<< SLOT_sig_fft.size()<<std::endl;
-      for(int i = 0; i <SLOT_sig_fft.size();i++)
-      {
-        
-        std::cout<<SLOT_sig_fft[i]<<std::endl;
-        }
       gen_array(slot_sig_cut);
     }
 

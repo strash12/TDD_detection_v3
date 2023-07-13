@@ -50,12 +50,11 @@ namespace param_store
         param.shift_mark                = param.fs/100-param.fs/1000-4 * param.fftsize;
         param.path_first_part[0]        = "./signal_storage/SSS_array_B2.txt";
         param.path_second_part[0]       = "./signal_storage/SSS_array_B2_n2.txt";
-	    param.shift_second_cor_start    = -200;
-	    param.shift_second_cor_stop     =  200;
+	    param.shift_second_cor_start    = -500;
+	    param.shift_second_cor_stop     =  500;
         param.windowing     = 1242;
         param.cyclic        = 2;
         param.shift         = 50;
-        param.delay         = -14;
         param.refsamples    =   4636;
     break;
 
@@ -146,13 +145,12 @@ namespace param_store
         param.path_second_part [0]   = "./signal_storage/SSS_array_B6_n2_1.txt";
         param.path_second_part [1]   = "./signal_storage/SSS_array_B6_n2_2.txt";
         param.path_second_part [2]   = "./signal_storage/SSS_array_B6_n2_3.txt";
-	    param.shift_second_cor_start = -200;
-	    param.shift_second_cor_stop = 200;
+	    param.shift_second_cor_start = -500;
+	    param.shift_second_cor_stop = 500;
         param.windowing     = 10000;
         param.cyclic        = 2;
         param.shift         = 1000;
-        param.delay         = -14;
-        param.refsamples    = param.fs/1000+3*param.fftsize+param.cp1+2*param.cp+param.delay;
+        param.refsamples    = 38900;
         break;
     
     default:
