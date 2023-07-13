@@ -63,7 +63,7 @@ namespace param_store
         param.path_first_part   [0]     = "./signal_storage/SSS_array_B3.txt";
         param.path_second_part  [0]     = "./signal_storage/SSS_array_B3_n2.txt";
         param.windowing     = 2528;
-        param.refsamples    = 10487;
+        param.refsamples    = 9790;
     break;
 
     case 15:
@@ -170,8 +170,6 @@ namespace param_store
         param.path_first_part[0]   = "./signal_storage/SSS_array_B2.txt";
         param.path_second_part[0]   = "./signal_storage/SSS_array_B2_n2.txt";
         param.shift_mark    = param.fs/100-param.fs/1000- 4 *param.fftsize;
-	    param.shift_second_cor_start = -3000;
-	    param.shift_second_cor_stop = 3000;
         param.windowing     =  1288;
         param.refsamples    =  4636;
 
@@ -206,55 +204,55 @@ namespace param_store
         param.adreses     = 0x000401D2;
         param .MMCM         = 0x00000010;
         param .MMCM_2       = 0x00002004;
-        param.path_first_part[0]   = "./signal_storage/SSS_array_B4.txt";
-        param.path_second_part[0]   = "./signal_storage/SSS_array_B4_n2.txt";
-        param.shift_mark    = param.fs/100-param.fs/1000-param.fftsize;
-        param.windowing     = 5265;
-        param.refsamples    = 18500;
+        param.shift_mark                = param.fs/100-param.fs/1000-param.fftsize;
+        param.path_first_part   [0]     = "./signal_storage/SSS_array_B4.txt";
+        param.path_second_part  [0]     = "./signal_storage/SSS_array_B4_n2.txt";
+        param.windowing     =   5265;
+        param.refsamples    =   18500;
 
     break;
 
     case 23:
-        param.fftsize       = 1536;
-        param.band          = 5;
-        param.cp1           = 120;
-        param.cp            = 108;
-        param.fs            = 23.04e6;
-        param.Nrb           = 100;                                    
-        param.adreses       = 0x000501A4;
-        param .MMCM         = 0x0002FE0A;
-        param .MMCM_2       = 0x01702004;
-        param.shift_mark         = param.fs/100-param.fs/1000-param.fftsize;
-        param.path_first_part[0]   = "./signal_storage/SSS_array_B5.txt";
-        param.path_first_part[0]   = "./signal_storage/SSS_array_B5_n1_1.txt";
-        param.path_first_part[1]   = "./signal_storage/SSS_array_B5_n1_2.txt";
-	    param.path_first_part[2]   = "./signal_storage/SSS_array_B5_n1_3.txt";
-        param.path_second_part[0]   = "./signal_storage/SSS_array_B5_n2_1.txt";
-        param.path_second_part[1]   = "./signal_storage/SSS_array_B5_n2_2.txt";
-	    param.path_second_part[2]   = "./signal_storage/SSS_array_B5_n2_3.txt";
-        param.windowing     = 7938;
-	    param.refsamples    = 28912;
+        param.fftsize       =   1536;
+        param.band          =   5;
+        param.cp1           =   120;
+        param.cp            =   108;
+        param.fs            =   23.04e6;
+        param.Nrb           =   100;                                    
+        param.adreses       =   0x000501A4;
+        param .MMCM         =   0x0002FE0A;
+        param .MMCM_2       =   0x01702004;
+        param.shift_mark              = param.fs/100-param.fs/1000-param.fftsize;
+        param.path_first_part   [0]   = "./signal_storage/SSS_array_B5.txt";
+        param.path_first_part   [0]   = "./signal_storage/SSS_array_B5_n1_1.txt";
+        param.path_first_part   [1]   = "./signal_storage/SSS_array_B5_n1_2.txt";
+	    param.path_first_part   [2]   = "./signal_storage/SSS_array_B5_n1_3.txt";
+        param.path_second_part  [0]   = "./signal_storage/SSS_array_B5_n2_1.txt";
+        param.path_second_part  [1]   = "./signal_storage/SSS_array_B5_n2_2.txt";
+	    param.path_second_part  [2]   = "./signal_storage/SSS_array_B5_n2_3.txt";
+        param.windowing     =   7938;
+	    param.refsamples    =   28912;
     break;
 
     case 30:
-        param.fftsize       = 2048;
-        param.band          = 6;
-        param.cp1           = 160;
-        param.cp            = 144;
-        param.fs            = 30.72e6;
-        param.Nrb           = 100;                                      
-        param.adreses     = 0x000601AE;
-        param .MMCM         = 0x00000008;
-        param .MMCM_2       = 0x00002004;
-        param.path_first_part [0]   = "./signal_storage/SSS_array_B6_n1_1.txt";
-        param.path_first_part [1]   = "./signal_storage/SSS_array_B6_n1_2.txt";
-        param.path_first_part [2]   = "./signal_storage/SSS_array_B6_n1_3.txt";
-        param.path_second_part [0]   = "./signal_storage/SSS_array_B6_n2_1.txt";
-        param.path_second_part [1]   = "./signal_storage/SSS_array_B6_n2_2.txt";
-        param.path_second_part [2]   = "./signal_storage/SSS_array_B6_n2_3.txt";
-        param.shift_mark    = param.fs/100-param.fs/1000-param.fftsize;
-        param.windowing     = 10000;
-        param.refsamples    =  38900;
+        param.fftsize       =   2048;
+        param.band          =   6;
+        param.cp1           =   160;
+        param.cp            =   144;
+        param.fs            =   30.72e6;
+        param.Nrb           =   100;                                      
+        param.adreses       =   0x000601AE;
+        param .MMCM         =   0x00000008;
+        param .MMCM_2       =   0x00002004;
+        param.shift_mark                = param.fs/100-param.fs/1000-param.fftsize;
+        param.path_first_part   [0]       = "./signal_storage/SSS_array_B6_n1_1.txt";
+        param.path_first_part   [1]       = "./signal_storage/SSS_array_B6_n1_2.txt";
+        param.path_first_part   [2]       = "./signal_storage/SSS_array_B6_n1_3.txt";
+        param.path_second_part  [0]      = "./signal_storage/SSS_array_B6_n2_1.txt";
+        param.path_second_part  [1]      = "./signal_storage/SSS_array_B6_n2_2.txt";
+        param.path_second_part  [2]      = "./signal_storage/SSS_array_B6_n2_3.txt";
+        param.windowing     =   10000;
+        param.refsamples    =   38900;
 
     break;
     
@@ -269,14 +267,15 @@ namespace param_store
     _parametrs  parametrs::set_param(tch::FullTusurCommonConfig _config)
     {
         int band = _config.bandwidth;
-        if(_config.cp_mode == tch::CpMode::Normal)
-            {   
+        
+        _config.cp_mode == tch::CpMode::Normal? return Norm_cp(band):return Ext_cp(band);
+        /*if(_config.cp_mode == tch::CpMode::Normal){   
                 return Norm_cp(band);
             }
         else
             {
                 return Ext_cp(band);
-            }
+            }*/
             
     }
 
