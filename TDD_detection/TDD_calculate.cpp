@@ -42,7 +42,7 @@ namespace mark
         {
             SSS.load_SSS(_param.CellId,path[i++]); // грузим SSS сигнал в fpga
             SSS.shift_mark(_param.shift_mark); // устанавливаем сдвиг
-	        usleep(1000000);// ждем пока устаканится корреляция
+	        usleep(10000000);// ждем пока устаканится корреляция
             validate_bit = check.read_validate_bit(ERROR_count);// проверяем бит валидации если есть выходим из цикла, если нет инкрементируем ошибку
             if(_param.band > 4 && i == 3 ){i = 0;} // для бесконечного перебора
 	        else if(_param.band < 5 && i == 1) {i = 0;}

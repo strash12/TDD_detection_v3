@@ -52,6 +52,11 @@ namespace mark
                     }
                 }
 
+                if(debug)
+                {
+                    std::cout<<"first symbol  = "_param.first<<std::endl;
+                }
+
         } //corelate_signal
 
         
@@ -61,7 +66,7 @@ namespace mark
                 _param.CellId = SSS.CellId_calculate(signal,_param,_param.first); // рассчет CelliD
                 if(debug)
                 {
-                    std::cout<<_param.CellId<<std::endl;
+                    std::cout<<"CellId = "_param.CellId<<std::endl;
                 }
         } // cell_id_calculate
 
