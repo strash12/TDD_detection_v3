@@ -146,7 +146,7 @@ int RS_cut::search_maximum()
     
     int TDD_config = -1;
     
-    for (int i = 0; i < TDD_patterns.size(); ++i){
+    for (int i = 0; i < 7; i++){
         if (TDD_conf == TDD_patterns[i]){
             TDD_config = i;
             break;

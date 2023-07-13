@@ -231,7 +231,7 @@ namespace param_store
         param.path_second_part  [1]   = "./signal_storage/SSS_array_B5_n2_2.txt";
 	    param.path_second_part  [2]   = "./signal_storage/SSS_array_B5_n2_3.txt";
         param.windowing     =   7938;
-	    param.refsamples    =   28912;
+	    param.refsamples    =   28312;
     break;
 
     case 30:
@@ -251,7 +251,7 @@ namespace param_store
         param.path_second_part  [0]      = "./signal_storage/SSS_array_B6_n2_1.txt";
         param.path_second_part  [1]      = "./signal_storage/SSS_array_B6_n2_2.txt";
         param.path_second_part  [2]      = "./signal_storage/SSS_array_B6_n2_3.txt";
-        param.windowing     =   10000;
+        param.windowing     =   9650;
         param.refsamples    =   38900;
 
     break;
