@@ -44,8 +44,7 @@ namespace param_store
         param.adreses        = 0x000200D2;
         param .MMCM          = 0x00000040;
         param .MMCM_2        = 0x00002004;
-        //param.shift_mark                = param.fs/100-param.fs/1000-4 * param.fftsize;
-        param.shift_mark                = param.fs/100-param.fs/1000-param.fftsize;
+        param.shift_mark                = param.fs/100-param.fs/1000-4 * param.fftsize;
         param.path_first_part   [0]        = "./signal_storage/SSS_array_B2.txt";
         param.path_second_part  [0]       = "./signal_storage/SSS_array_B2_n2.txt";
         param.windowing     = 1242;
@@ -64,8 +63,7 @@ namespace param_store
         param.adreses       = 0x00030136;
         param .MMCM         = 0x00000020;
         param .MMCM_2       = 0x00002004;
-        //param.shift_mark                = param.fs/100-param.fs/1000- 4 * param.fftsize;
-        param.shift_mark                = param.fs/100-param.fs/1000-param.fftsize;
+        param.shift_mark                = param.fs/100-param.fs/1000- 4 * param.fftsize;
         param.path_first_part   [0]        = "./signal_storage/SSS_array_B3.txt";
         param.path_second_part  [0]       = "./signal_storage/SSS_array_B3_n2.txt";
         param.windowing     = 2528;
