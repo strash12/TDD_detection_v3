@@ -31,7 +31,7 @@ namespace mark
     {
         int ERROR_count; // счетчик ошибок
         bool validate_bit = 0; // бит валидации
-        int i = 0; //
+        int half = 0; // части SSS сигнала
 
         fpga_configure::SSS_upload SSS(_param); 
         fpga_configure::config_fpga check(_param); 
@@ -40,12 +40,12 @@ namespace mark
          так как размер коррелятора 1024 , генерировать SSS пришлось частями. */
         while (!validate_bit)
         {
-            SSS.load_SSS(_param.CellId,path[i++]); // грузим SSS сигнал в fpga
+            SSS.load_SSS(_param.CellId,path[half++]); // грузим SSS сигнал в fpga
             SSS.shift_mark(_param.shift_mark); // устанавливаем сдвиг
 	        usleep(10000000);// ждем пока устаканится корреляция
             validate_bit = check.read_validate_bit(ERROR_count);// проверяем бит валидации если есть выходим из цикла, если нет инкрементируем ошибку
-            if(_param.band > 4 && i == 3 ){i = 0;} // для бесконечного перебора
-	        else if(_param.band < 5 && i == 1) {i = 0;}
+            if(_param.band > 4 && half == 3 ){half = 0;} // для бесконечного перебора
+	        else if(_param.band < 5 && half == 1) {half = 0;}
 
             if(ERROR_count == 10 )// если 10 ошибок, сворачиваес стек и выдаем ошибку
             {
@@ -54,7 +54,10 @@ namespace mark
                 break;//
             }
         }
-
+        if(debug)
+        {
+            std::cout<<"number SSS half = "<<half<<std::endl;
+        }
         signal::signal_create download_sig; 
         xvec signal = download_sig.download_convert_signal(name);// считываем сигнал
         return signal;
