@@ -12,7 +12,7 @@ namespace param_store
             int fftsize,cp,cp1,Nrb,fs,cyclic,windowing,band,PSS_number,CellId,shift_mark,delay,refsamples,first;
 	        int shift_second_cor_start  = -1000;// окна корреляции 
             int shift_second_cor_stop   = 1000;// окна корреляции
-            int shift = 500;// сдвиг для расчета примерного расположения первого символа. 
+            int shift = 1000;// сдвиг для расчета примерного расположения первого символа. 
 	        std::string path_first_part[3],path_second_part[3];
             uint32_t MMCM, MMCM_2,adreses;
             int Ns = 20;
