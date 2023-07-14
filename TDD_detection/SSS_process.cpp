@@ -18,7 +18,6 @@ namespace SSS
         int Cellid2 = sss_corelatate(SSS_second_part,maxSSS2,SSS_62);// корреляция второй половины
         int CellId = maxSSS1>maxSSS2?Cellid1:Cellid2;// смотрим в какой половине было наибольшее значение корреляции, и выбираем CelliD.
         return CellId;//
-
     }
 
     void SSS::SSS_PROC::cut_sss_signal(xvec signal,xvec& SSS_cut,param_store::_parametrs param,int first) //вырезаем отсчет содержащий SSS
