@@ -24,7 +24,9 @@
 typedef std::complex<double> xd;
 typedef std::vector<xd> xvec;
 
-static int const debug = 1;
+static int const debug = 0;
+#define PBSTR "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+#define PBWIDTH 60
 
 namespace mark
 {
@@ -40,7 +42,14 @@ namespace mark
         }
         const char* what() const noexcept override { return m_error.c_str(); }
     };
-
+    
+    void printProgress(double percentage) {
+        int val = (int) (percentage * 100);
+        int lpad = (int) (percentage * PBWIDTH);
+        int rpad = PBWIDTH - lpad;
+        printf("\r%3d%% [%.*s%*s]", val, lpad, PBSTR, rpad, "");
+        fflush(stdout);
+}
     class create_mark
     {
 

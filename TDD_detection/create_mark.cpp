@@ -17,6 +17,7 @@ namespace mark
 
         void create_mark::calculate_mark()
         {
+            std::cout<<"start create mark:"<<std::endl;
             set_params(); // передача  параметров о полосе, регистрах, нобере бэнда в fpga 
             signal::signal_create download_sig;
             xvec signal = download_sig.download_convert_signal("real1.txt"); // загрузка сигнала, параметр который передаем, имя файла в который сохраниться сигнал

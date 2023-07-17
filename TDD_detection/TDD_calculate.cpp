@@ -12,7 +12,7 @@ namespace mark
 
     int TDD_create::Calculate_TDD()
     {
-
+            std::cout<<"start TDD calculate:"<<std::endl;
             xvec sig_part_2 = set_mark(_param.path_second_part,"fr2.txt"); // ставим метку на вторую половину кадра, и считываем 400000 отсчетов
             xvec sig_part_1 = set_mark(_param.path_first_part,"fr1.txt");//   ставим метку на первую половину кадра, и считываем 400000 отсчетов
             int first_1 = second_corr(sig_part_1);// уточнаяющая корреляция для второго считывания первой половины
