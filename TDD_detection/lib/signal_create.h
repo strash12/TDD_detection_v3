@@ -5,7 +5,7 @@
 #include<vector>
 
 typedef std::complex<double> xd;
-typedef std::vector<xd> xvec;
+typedef std::vector<xd> xvec; //комплексный вектор
 
 namespace signal
 {

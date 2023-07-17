@@ -18,8 +18,8 @@ public:
     static xvec get_pss(int Cell_id,int len,int cp);
 
 private:    
-    static const xd d_C_I;
-    static const double d_PI;
+    static const xd d_C_I; // мнимая единица
+    static const double d_PI; // число пи
     static void normalize(xd *zc_t,xd *pss_seq, int len);
     static void gen_pss_t(xd *zc_t,int Cell_id,int len);
     static void gen_conj_pss(xd *zc_t,int Cell_id,int len);
