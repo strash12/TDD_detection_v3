@@ -63,6 +63,7 @@ namespace RS
       nrs::NRS_GEN RS(_param,_param.CellId);
 
       RS.NRC(_param,rs_signal_fixed_real,rs_signal_fixed_imag,rs_space_index);
+      mark::printProgress(0.8);
 
     }
 
@@ -78,7 +79,7 @@ namespace RS
             xvec Slot_sig_2(SLot.begin()+_param.cp1 + 4*(_param.fftsize + _param.cp),SLot.begin()+_param.cp1 + 5*(_param.fftsize + _param.cp) - _param.cp);
             fft_cut(Slot_sig_2);
         }
-        
+        mark::printProgress(0.9);
         std::ofstream outFile("framesig_RS.txt");
         for (const auto &e : framesig_RS) {outFile << e <<"\n";}
         outFile.close();
@@ -128,6 +129,7 @@ int RS_cut::search_maximum()
           std::cout<<"TDD_corr_lvl = "<<cor_arr[i]<<std::endl;}
 
         }
+        mark::printProgress(1.0);
         return TDD_config();
     }
 
