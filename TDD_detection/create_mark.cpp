@@ -32,7 +32,6 @@ namespace mark
             _param = params.set_param(_config); // передаем параметры в коррелятор
             fpga_configure::config_fpga fpga(_param);
             fpga.set_PSS_fpga(); //поиск предположительного отсчета начала кадра
-            mark::Progress::printProgress(0.1);
 
         } //set_params
 
@@ -58,7 +57,7 @@ namespace mark
                 {
                     std::cout<<"first symbol  = "<<_param.first<<std::endl;
                 }
-            mark::Progress::printProgress(0.2);
+
         } //corelate_signal
 
         
@@ -70,7 +69,6 @@ namespace mark
                 {
                     std::cout<<"CellId = "<<_param.CellId<<std::endl;
                 }
-            mark::Progress::printProgress(0.3);
         } // cell_id_calculate
 
 

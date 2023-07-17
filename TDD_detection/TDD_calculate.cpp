@@ -12,7 +12,7 @@ namespace mark
 
     int TDD_create::Calculate_TDD()
     {
-            std::cout<<"start TDD calculate:"<<std::endl;
+            std::cout<<"start TDD calculate :"<<std::endl;
             xvec sig_part_2 = set_mark(_param.path_second_part,"fr2.txt"); // ставим метку на вторую половину кадра, и считываем 400000 отсчетов
             xvec sig_part_1 = set_mark(_param.path_first_part,"fr1.txt");//   ставим метку на первую половину кадра, и считываем 400000 отсчетов
             int first_1 = second_corr(sig_part_1);// уточнаяющая корреляция для второго считывания первой половины
@@ -60,7 +60,6 @@ namespace mark
         }
         signal::signal_create download_sig; 
         xvec signal = download_sig.download_convert_signal(name);// считываем сигнал
-        mark::Progress::printProgress(0.4);
         return signal;
     }
 
@@ -69,7 +68,6 @@ namespace mark
         LTE::xcorr corr;
         xvec PSS = PSS_generate::pss::get_pss(_param.PSS_number,_param.fftsize,_param.cp); // генерим PSS(только одну так как знаем из ее номер )
         return corr.corr_coef(signal,PSS,_param.refsamples,_param.fftsize,_param.cp,_param.shift_second_cor_start,_param.shift_second_cor_stop);
-        mark::Progress::printProgress(0.5);
     }
 
     
@@ -77,9 +75,7 @@ namespace mark
     {
         LTE::freq_shift_estimate freq; // считаем частотный сдвиг
         return freq.get_angle(signal,_param.cp,_param.fftsize,first);
-        mark::Progress::printProgress(0.6);
     }
-
 
     
     xvec TDD_create::freq_shift_remove(xvec signal,double angle)
@@ -89,7 +85,6 @@ namespace mark
         {
             sig[i] = signal[i] * exp(J*(i)*(angle/_param.fftsize));
         }
-        mark::Progress::printProgress(0.7);
         return sig;
     }
 
