@@ -6,7 +6,7 @@ ENV = LD_LIBRARY_PATH="$$LD_LIBRARY_PATH:$(LIB_PATH)"
 
 all: TDD_detection
 
-TDD_detection: main.o param_storage.o create_mark.o signal_create.o fpga_configure.o LTE_PROC.o fft.o SSS_process.o TDD_calculate.o RS_PROC.o NRS_gen.o pss.o
+TDD_detection: 
 	$(ENV) $(CC) $(CFLAGS) main.o param_storage.o create_mark.o signal_create.o fpga_configure.o LTE_PROC.o fft.o SSS_process.o TDD_calculate.o RS_PROC.o NRS_gen.o pss.o -o TDD_detection $(LIBS)
 
 main.o: main.cpp
