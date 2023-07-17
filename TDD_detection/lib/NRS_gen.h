@@ -1,3 +1,4 @@
+// генератор RS сигналов  согласно TS 36.211 - 6.10.1
 #ifndef defined NRS_gen
 #define NRS_gen
 
@@ -10,15 +11,15 @@ namespace nrs
 class NRS_GEN
 {
     protected:
-        int M;
+        int M;//количество пилотов
         int Ncp,Ns_fix,fix_1,C_init,C_init_fix,r,m_,Lb;
-        int Ns  = 20;
-        int Nc  =   1600;
-        int _CellId;
-        int rs_space_1_fix_normal[40];
-        int rs_space_1_fix_extended[40];
-        int NS_1_normal[2];
-        int NS_1_extended[2];
+        int Ns  = 20; // колтчество сабфреймов в кадре
+        int Nc  =   1600; // сдвиг
+        int _CellId; // идентификатор соты
+        int rs_space_1_fix_normal[40];  //задающая последовательность для нормального префикса
+        int rs_space_1_fix_extended[40]; //задающая последовательность для расширенного префикса
+        int NS_1_normal[2]; //корни для нормального
+        int NS_1_extended[2]; //корни для расширенного 
 
     public:
         NRS_GEN(param_store::_parametrs param,int);

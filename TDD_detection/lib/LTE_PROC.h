@@ -12,11 +12,11 @@ namespace LTE
 {
     struct cor_data
     {
-        double maximum ;
-        double level   ;
+        double  maximum ; // максимум корреляцмм
+        double  level   ; // уровень корреляции 
         int     first   ;
         int     number  ;
-        xd cor_lvl;
+        xd      cor_lvl;    
         
     };//cor_data
 
@@ -36,8 +36,6 @@ namespace LTE
     {
         private:
             int _FFT_SIZE;
-            //xd omega(const double &p, const double &q);
-            //xvec _fft(xvec &f);
         public:
             FFT_transform(int fftsize);
             ~FFT_transform();
