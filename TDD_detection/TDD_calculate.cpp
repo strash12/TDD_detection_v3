@@ -60,7 +60,7 @@ namespace mark
         }
         signal::signal_create download_sig; 
         xvec signal = download_sig.download_convert_signal(name);// считываем сигнал
-        mark::printProgress(0.4);
+        mark::Progress::printProgress(0.4);
         return signal;
     }
 
@@ -69,7 +69,7 @@ namespace mark
         LTE::xcorr corr;
         xvec PSS = PSS_generate::pss::get_pss(_param.PSS_number,_param.fftsize,_param.cp); // генерим PSS(только одну так как знаем из ее номер )
         return corr.corr_coef(signal,PSS,_param.refsamples,_param.fftsize,_param.cp,_param.shift_second_cor_start,_param.shift_second_cor_stop);
-        mark::printProgress(0.5);
+        mark::Progress::printProgress(0.5);
     }
 
     
@@ -77,7 +77,7 @@ namespace mark
     {
         LTE::freq_shift_estimate freq; // считаем частотный сдвиг
         return freq.get_angle(signal,_param.cp,_param.fftsize,first);
-        mark::printProgress(0.6);
+        mark::Progress::printProgress(0.6);
     }
 
 
@@ -89,7 +89,7 @@ namespace mark
         {
             sig[i] = signal[i] * exp(J*(i)*(angle/_param.fftsize));
         }
-        mark::printProgress(0.7);
+        mark::Progress::printProgress(0.7);
         return sig;
     }
 
