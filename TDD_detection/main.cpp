@@ -82,7 +82,7 @@ protected:
 			auto msg = "CellId = " + std::to_string(first_part._param.CellId) + "\n" + "TDD config = " + std::to_string(TDD_config);
 			tch::write_common(msg);
 			fpga_configure::SSS_upload SSS(first_part._param);
-			int final_shift = first_part._param.fs/100-first_part._param.fs/1000-first_part._param.fftsize;
+			int final_shift = first_part._param.fs/100-first_part._param.fs/1000-first_part._param.fftsize+(65e-6*first_part._param.fs);
 			SSS.shift_mark(final_shift);
 			return _config;
 		
