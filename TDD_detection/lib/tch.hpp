@@ -31,7 +31,7 @@ namespace tch {
 		float bandwidth = 1.92;
 		CpMode cp_mode = CpMode::Normal;
 		CorrelationKind correlation_kind = CorrelationKind::PSS;
-		size_t correlation_level = 0x020100DC;
+		int correlation_level = 0;
 		bool automatic_threshold = false;
 	};
 	
@@ -52,7 +52,7 @@ namespace tch {
 		virtual CorrelationKind handle_get_correlation_kind() {}
 		
 		virtual void handle_set_correlation_level(size_t level) {}
-		virtual size_t handle_get_correlation_level() {}
+		virtual int handle_get_correlation_level() {}
 
 		virtual void handle_set_automatic_threshold(bool enable) {}
 		virtual bool handle_get_automatic_threshold() {}
@@ -101,13 +101,13 @@ namespace tch {
 				{
 					"set_correlation_level",
 					[](BaseHandle* self, const void* input, void* output) {
-						self->handle_set_correlation_level(*reinterpret_cast<const size_t*>(input));
+						self->handle_set_correlation_level(*reinterpret_cast<const int*>(input));
 					}
 				},
 				{
 					"get_correlation_level",
 					[](BaseHandle* self, const void* input, void* output) {
-						*(reinterpret_cast<size_t*>(output)) = self->handle_get_correlation_level();
+						*(reinterpret_cast<int*>(output)) = self->handle_get_correlation_level();
 					}
 				},
 				{

@@ -48,8 +48,9 @@ protected:
 		
 	virtual void handle_set_correlation_level(int level) override {
 		auto msg = "from c++ handle_set_correlation_level correlation_level: " + std::to_string(level);
-		_config.correlation_level = 0;
 		_config.correlation_level = level;
+		_config.correlation_level = 0;
+		fpga_configure::SSS_upload::shift_mark(_config.correlation_level);
 		std::cout << msg << std::endl;
 		tch::write_common(msg);
 	}
@@ -57,7 +58,7 @@ protected:
 		auto msg = "from c++ handle_get_correlation_level correlation_level: " + std::to_string(_config.correlation_level);
 		std::cout << msg << std::endl;
 		tch::write_common(msg);
-		fpga_configure::SSS_upload::shift_mark(_config.correlation_level);
+		
 		return _config.correlation_level;
 	}
 
