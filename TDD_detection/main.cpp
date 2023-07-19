@@ -50,6 +50,8 @@ protected:
 		auto msg = "from c++ handle_set_correlation_level correlation_level: " + std::to_string(level);
 		_config.correlation_level = level;
 		std::cout << msg << std::endl;
+		fpga_configure::SSS_upload SSS(first_part._param);
+		SSS.shift_mark(_config.correlation_level);
 		tch::write_common(msg);
 	}
 	virtual size_t handle_get_correlation_level() override {
