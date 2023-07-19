@@ -46,13 +46,14 @@ protected:
 		return _config.correlation_kind;
 	}
 		
-	virtual void handle_set_correlation_level(size_t level) override {
+	virtual void handle_set_correlation_level(int level) override {
 		auto msg = "from c++ handle_set_correlation_level correlation_level: " + std::to_string(level);
+		_config.correlation_level = 0;
 		_config.correlation_level = level;
 		std::cout << msg << std::endl;
 		tch::write_common(msg);
 	}
-	virtual size_t handle_get_correlation_level() override {
+	virtual int handle_get_correlation_level() override {
 		auto msg = "from c++ handle_get_correlation_level correlation_level: " + std::to_string(_config.correlation_level);
 		std::cout << msg << std::endl;
 		tch::write_common(msg);
