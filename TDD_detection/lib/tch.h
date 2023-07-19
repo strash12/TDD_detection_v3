@@ -22,7 +22,7 @@ typedef struct TCH_FullTusurCommonConfig {
   float bandwidth;
   enum CpMode cp_mode;
   enum CorrelationKind correlation_kind;
-  size_t correlation_level;
+  int correlation_level;
   bool automatic_threshold;
 } FullTusurCommonConfig;
 
