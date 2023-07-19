@@ -32,16 +32,14 @@ namespace mark
         int ERROR_count; // счетчик ошибок
         bool validate_bit = 0; // бит валидации
         int half = 0; // части SSS сигнала
-
-        fpga_configure::SSS_upload SSS(_param); 
         fpga_configure::config_fpga check(_param); 
 
         /* пока с fpga части не придел бит валидации (подверждение того что синхронизация с SSS произошла ) перебираем  частии  сигнала SSS  
          так как размер коррелятора 1024 , генерировать SSS пришлось частями. */
         while (!validate_bit)
         {
-            SSS.load_SSS(_param.CellId,path[half++]); // грузим SSS сигнал в fpga
-            SSS.shift_mark(_param.shift_mark); // устанавливаем сдвиг
+            fpga_configure::SSS_upload::load_SSS(_param.CellId,path[half++],_param.adreses); // грузим SSS сигнал в fpga
+            fpga_configure::SSS_upload::shift_mark(_param.shift_mark); // устанавливаем сдвиг
 	        usleep(10000000);// ждем пока устаканится корреляция
             validate_bit = check.read_validate_bit(ERROR_count);// проверяем бит валидации если есть выходим из цикла, если нет инкрементируем ошибку
             if(_param.band > 4 && half == 3 ){half = 0;} // для бесконечного перебора

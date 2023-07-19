@@ -27,11 +27,10 @@ namespace fpga_configure
     class SSS_upload
     {
         public:
-            param_store::_parametrs _param;
-            SSS_upload(param_store::_parametrs param);
+            SSS_upload();
             ~SSS_upload();
-            void load_SSS(int CellId,std::string path);
-            void shift_mark(int shiftt);
+            static void load_SSS(int CellId,std::string path,uint32_t config);
+            static void shift_mark(int shiftt);
         private:
 
 

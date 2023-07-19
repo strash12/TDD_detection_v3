@@ -50,14 +50,13 @@ protected:
 		auto msg = "from c++ handle_set_correlation_level correlation_level: " + std::to_string(level);
 		_config.correlation_level = level;
 		std::cout << msg << std::endl;
-		fpga_configure::SSS_upload SSS(first_part._param);
-		SSS.shift_mark(_config.correlation_level);
 		tch::write_common(msg);
 	}
 	virtual size_t handle_get_correlation_level() override {
 		auto msg = "from c++ handle_get_correlation_level correlation_level: " + std::to_string(_config.correlation_level);
 		std::cout << msg << std::endl;
 		tch::write_common(msg);
+		fpga_configure::SSS_upload::shift_mark(_config.correlation_level);
 		return _config.correlation_level;
 	}
 
@@ -83,9 +82,8 @@ protected:
 			int TDD_config = TDD.Calculate_TDD(); // cxbnftv TDD_config
 			auto msg = "CellId = " + std::to_string(first_part._param.CellId) + "\n" + "TDD config = " + std::to_string(TDD_config);
 			tch::write_common(msg);
-			fpga_configure::SSS_upload SSS(first_part._param);
 			int final_shift = first_part._param.fs/100-first_part._param.fs/1000-(first_part._param.fftsize+first_part._param.cp);
-			SSS.shift_mark(final_shift);
+			fpga_configure::SSS_upload::shift_mark(final_shift);
 			return _config;
 		
 		}

@@ -110,17 +110,12 @@ namespace fpga_configure
     }
 
     
-    SSS_upload::SSS_upload(param_store::_parametrs param)
-    {
-        _param = param;
-    }
-
+    SSS_upload::SSS_upload(){}
     SSS_upload::~SSS_upload() {};
 
 
-    void SSS_upload::load_SSS(int CellId, std::string path)
+    void SSS_upload::load_SSS(int CellId, std::string path,uint32_t config)
     {
-        uint32_t config = _param.adreses;
         int numOfLines = 0;
         std::string digits;
         COR_ctrl.write<uint32_t>(0, config);
