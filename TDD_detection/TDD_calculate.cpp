@@ -56,6 +56,7 @@ namespace mark
         {
             std::cout<<"number SSS half = "<<half<<std::endl;
         }
+        _param.half = half;
         signal::signal_create download_sig; 
         xvec signal = download_sig.download_convert_signal(name);// считываем сигнал
         return signal;

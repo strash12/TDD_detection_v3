@@ -82,7 +82,7 @@ protected:
 			int TDD_config = TDD.Calculate_TDD(); // cxbnftv TDD_config
 			auto msg = "CellId = " + std::to_string(first_part._param.CellId) + "\n" + "TDD config = " + std::to_string(TDD_config);
 			tch::write_common(msg);
-			int final_shift = first_part._param.fs/100-first_part._param.fs/1000-(first_part._param.fftsize+first_part._param.cp);
+			int final_shift = first_part._param.fs/100-first_part._param.fs/1000-(first_part._param.fftsize+first_part._param.cp)-first._param.half*first._param.shift_band;
 			fpga_configure::SSS_upload::shift_mark(final_shift);
 			return _config;
 		

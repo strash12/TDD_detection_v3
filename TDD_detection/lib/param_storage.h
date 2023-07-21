@@ -16,6 +16,8 @@ namespace param_store
 	        std::string path_first_part[3],path_second_part[3];
             uint32_t MMCM, MMCM_2,adreses;
             int Ns = 20;
+            int half = 0;
+            int shift_band = 0;
 	
         } ;
         
