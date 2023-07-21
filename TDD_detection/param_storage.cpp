@@ -174,6 +174,7 @@ namespace param_store
         param.shift_mark    = param.fs/100-param.fs/1000- 4 *param.fftsize;
         param.windowing     =  1288;
         param.refsamples    =  4636;
+        param.correct       = -500;
 
 
     break;
@@ -193,6 +194,7 @@ namespace param_store
         param.shift_mark    = param.fs/100-param.fs/1000- 3 * param.fftsize;
         param.windowing     = 2619;
         param.refsamples    = 9790;
+        param.correct       = 0;
 
     break;
     
@@ -211,6 +213,7 @@ namespace param_store
         param.path_second_part  [0]     = "./signal_storage/SSS_array_B4_n2.txt";
         param.windowing     =   5265;
         param.refsamples    =   18500;
+        param.correct       =   1075;
 
     break;
 
@@ -235,6 +238,7 @@ namespace param_store
         param.windowing     =   7938;
 	    param.refsamples    =   28312;
         param.shift_band    =   256;
+        param.correct       =   1958;
     break;
 
     case 30:
@@ -257,6 +261,7 @@ namespace param_store
         param.windowing     =   9650;
         param.refsamples    =   38000;
         param.shift_band    =   512;
+        param.correct       =   3072;
 
     break;
     

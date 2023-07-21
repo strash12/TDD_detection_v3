@@ -18,6 +18,7 @@ namespace param_store
             int Ns = 20;
             int half = 0;
             int shift_band = 0;
+            int correct = 0;
 	
         } ;
         
