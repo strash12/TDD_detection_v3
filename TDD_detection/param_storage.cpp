@@ -47,7 +47,7 @@ namespace param_store
         param.path_second_part  [0]         = "./signal_storage/SSS_array_B2_n2.txt";
         param.windowing     = 1242;
         param.refsamples    = 4636;
-        param.correct       = -500;
+        param.correct       = -470;
         
     break;
 
@@ -66,7 +66,7 @@ namespace param_store
         param.path_second_part  [0]     = "./signal_storage/SSS_array_B3_n2.txt";
         param.windowing     = 2528;
         param.refsamples    = 10487;
-        param.correct       = 0;
+        param.correct       = 122;
     break;
 
     case 15:
@@ -84,7 +84,7 @@ namespace param_store
         param.path_second_part  [0]     = "./signal_storage/SSS_array_B4_n2.txt";;
         param.windowing     = 5099;
         param.refsamples    = 18933;
-        param.correct       =   1075;
+        param.correct       =   1228;
     break;
 
     case 23:
@@ -107,7 +107,7 @@ namespace param_store
         param.windowing     = 7645;
         param.refsamples    = 28912;
         param.shift_band    =  256;
-        param.correct       =   1958;
+        param.correct       =   2372;
     break;
 
     case 30:
@@ -130,7 +130,7 @@ namespace param_store
         param.windowing     = 10200;
         param.refsamples    = 38900;
         param.shift_band    =  512;
-        param.correct       =   3072;
+        param.correct       =   3532;
         break;
     
     default:
