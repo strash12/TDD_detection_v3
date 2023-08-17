@@ -160,7 +160,7 @@ namespace param_store
         param .MMCM_2       = 0x00002004;
         param.path_first_part   [0]     = "./signal_storage/SSS_array_B4.txt";
         param.path_second_part  [0]     = "./signal_storage/SSS_array_B4_n2.txt";
-        param.shift_mark                = param.fs/100-param.fs/1000-param.fftsize+17;
+        param.shift_mark                = param.fs/100-param.fs/1000-param.fftsize;
         param.windowing     =  5265;
         param.refsamples    =  18500;
         param.correct       =   1228;
