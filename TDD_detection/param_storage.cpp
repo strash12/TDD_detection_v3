@@ -30,6 +30,7 @@ namespace param_store
         param.path_second_part  [0]       = "./signal_storage/SSS_array_B4_n2.txt"; // массив SSS для второй половины
         param.windowing     = 5092;
         param.refsamples    = 18933; // примерное расположение первого символа
+	param.correct       =   1228;    
     break;
 
     case 3:
@@ -162,6 +163,7 @@ namespace param_store
         param.shift_mark                = param.fs/100-param.fs/1000-param.fftsize+17;
         param.windowing     =  5265;
         param.refsamples    =  18500;
+        param.correct       =   1228;
 
     break;
     
